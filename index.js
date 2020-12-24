@@ -1,6 +1,7 @@
 const cron = require("cron");
 
 const Discord = require("discord.js");
+require('dotenv').config();
 
 const { ping, hydrate, start, stop, daily, help } = require('./commands/messageCommands');
 
@@ -43,5 +44,4 @@ client.on("message", function(message)
     action(message);
     // result.react("🌊");
 });
-
 client.login(process.env.BOT_TOKEN);
