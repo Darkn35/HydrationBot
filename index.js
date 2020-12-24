@@ -1,7 +1,6 @@
 const cron = require("cron");
 
 const Discord = require("discord.js");
-const config = require("./config.json");
 
 const { ping, hydrate, start, stop, daily, help } = require('./commands/messageCommands');
 
