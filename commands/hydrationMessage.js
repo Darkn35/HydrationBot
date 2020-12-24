@@ -5,6 +5,7 @@ function hydrationMessage(message)
     minMsg = Math.ceil(0);
     maxMsg = Math.floor(10);
 
+    // randomize message to use
     let messagePing = Math.floor(Math.random() * (maxMsg - minMsg) + minMsg);
 
     let messages = [

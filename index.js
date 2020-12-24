@@ -1,5 +1,3 @@
-const cron = require("cron");
-
 const Discord = require("discord.js");
 require('dotenv').config();
 
@@ -7,6 +5,7 @@ const { ping, hydrate, start, stop, daily, help } = require('./commands/messageC
 
 const client = new Discord.Client();
 
+// bot prefix is "hb!"
 const prefix = "hb!";
 
 const commands = {
@@ -32,6 +31,7 @@ client.on("message", function(message)
     const args = commandBody.split(' ');
     const command = args.shift().toLowerCase();
 
+    // recieves user commands
     let action;
     try
     {
@@ -42,6 +42,5 @@ client.on("message", function(message)
         action = message => message.channel.send('Command does not exist.');
     }
     action(message);
-    // result.react("🌊");
 });
 client.login(process.env.BOT_TOKEN);

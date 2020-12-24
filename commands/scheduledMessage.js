@@ -4,10 +4,7 @@ const SCHEDULE_AMOUNT = 8;
 
 const sendHydrateMsg = require('./hydrationMessage');
 
-const commands = {
-    sendHydrateMsg
-}
-
+// function to sort numbers in ascending order
 function compareNumbers(a, b) {
     return a - b;
 }
@@ -27,6 +24,7 @@ function scheduledMessage(message) {
     let minSec = Math.ceil(0);
     let maxSec = Math.floor(59);
 
+    // randomize the hours, minutes and seconds    
     for (let i = 0; i < SCHEDULE_AMOUNT; i++)
     {
         let hour = Math.floor(Math.random() * (maxHour - minHour) + minHour);
@@ -39,8 +37,10 @@ function scheduledMessage(message) {
         rngSec.push(sec);
     }
 
+    // sort rngHour in ascending order
     rngHour.sort(compareNumbers);
 
+    // prints the schedule of each ping in console
     for (let j = 0; j < SCHEDULE_AMOUNT; j++)
     {
         arrNumber = j + 1;
@@ -49,8 +49,6 @@ function scheduledMessage(message) {
         console.log(arrNumber + ". Minutes:" + rngMin[j]);
         console.log(arrNumber + ". Seconds:" + rngSec[j] );
     }
-
-    let action;
 
     const runScheduledNotif = () => {
         sendHydrateMsg(message);
@@ -65,6 +63,7 @@ function scheduledMessage(message) {
         return notifCron;
     });
 
+    // for debugging purposes
     const stopCrons = () => {
         for(const cron of crons)
         {

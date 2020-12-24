@@ -3,13 +3,9 @@ const cron = require("cron");
 const sendHydrateMsg = require('./hydrationMessage');
 const sendScheduledMsg = require('./scheduledMessage');
 
-const commands = {
-    sendHydrateMsg,
-    sendScheduledMsg
-}
-
 let stopper = () => {};
 
+// command functions
 function ping(message)
 {
     const timeTaken = Date.now() - message.createdTimestamp;
