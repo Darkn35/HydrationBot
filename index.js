@@ -32,15 +32,15 @@ client.on("message", function(message)
     const command = args.shift().toLowerCase();
 
     // recieves user commands
-    let action;
+    let action = message => message.channel.send('Command does not exist.');
     try
     {
         action = commands[command];
     }
-    catch(SyntaxError)
-    {
-        action = message => message.channel.send('Command does not exist.');
-    }
-    action(message);
+    catch(TypeError) {}
+    if(action)
+        action(message);
+    else
+        message.channel.send('Command does not exist.');
 });
 client.login(process.env.BOT_TOKEN);
