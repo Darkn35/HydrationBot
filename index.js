@@ -45,4 +45,4 @@ client.on("message", function(message)
     // result.react("🌊");
 });
 
-client.login(config.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
