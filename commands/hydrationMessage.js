@@ -2,12 +2,6 @@ function hydrationMessage(message)
 {
     let myRole = message.guild.roles.cache.find(role => role.name === "Hydrate Ping");
 
-    minMsg = Math.ceil(0);
-    maxMsg = Math.floor(10);
-
-    // randomize message to use
-    let messagePing = Math.floor(Math.random() * (maxMsg - minMsg) + minMsg);
-
     let messages = [
         () => ` it is time to drink water bois.`,
         () => ` :ocean:`,
@@ -33,8 +27,28 @@ function hydrationMessage(message)
         () => ` stay hydrated.`,
         () => ` inom na ng tubig, mga hatdog.`,
         () => ` inom ng tubig kung ayaw niyong makakita ng galit na (ate) ryn.`,
-        () => ` ~~drink water for pakistan~~`
+        () => ` theres someone not hydrated among us ඞ`,
+        () => ` ~~drink water for pakistan~~`,
+        () => {
+            const kalmEmote = message.client.emojis.cache.find(emoji => emoji.name === "kalm");
+            if (kalmEmote == `undefined`)
+            {
+                return ` :scream: emote is missing, anyways drink water to be`;
+            }
+            else
+            {
+                return ` drink water to be ${kalmEmote}`;
+            }
+        },
+        () => ` malulunod na tayo sa tubig :ocean:`
     ];
+
+    minMsg = Math.ceil(0);
+    maxMsg = messages.length;
+
+    // randomize message to use
+    let messagePing = Math.floor(Math.random() * (maxMsg - minMsg) + minMsg);
+
     let messageContent = messages[messagePing]();
 
     return message

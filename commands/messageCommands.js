@@ -20,6 +20,8 @@ function hydrate(message)
 function start(message)
 {
     message.channel.send('Got it!');
+    stopper();
+    stopper = () => {};
     const { stopCrons } = sendScheduledMsg(message);
     stopper = stopCrons;
 }
